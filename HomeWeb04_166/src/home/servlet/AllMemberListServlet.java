@@ -23,13 +23,13 @@ public class AllMemberListServlet extends GenericServlet {
 		ResultSet rs = null;
 		
 		String url = "jdbc:oracle:thin@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp";
+		String user = "sql";
+		String password = "sql";
 		
 		String sql = "";
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleSDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url,user,password);
 			stmt = conn.createStatement();
 			
