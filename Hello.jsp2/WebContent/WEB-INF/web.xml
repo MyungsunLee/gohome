@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>Hello.jsp</display-name>
+	<!-- 위에는 설정?선언?임 -->
+	<!-- Hello.jsp는 프로젝트명으로 맞춰놓은 것. -->
+
+
+
+	<!-- 서블릿 선언 -->
+	<servlet>
+		<!-- servlet-name은 변수??의 개념입니당 ㅇ0ㅇ -->
+		<servlet-name>Hello</servlet-name><!-- 주소창에 보여주는 내용? -->
+		<servlet-class>lesson.servlet.HelloWorld</servlet-class>
+		<!-- HelloWorld도 클래스 이름 고대로 가져와서 적은것임...만약 다르면 인식을 못합니당 -->
+	</servlet>
+
+
+	<!-- 서블릿 존재의 유무(?) -->
+	<!-- 서블릿을 url과 연결 -->
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/Hello</url-pattern><!-- /Hello는 절대경로 . 이 줄로 인해서 http://localhost:8090/Hello.jsp/Hello -->
+	</servlet-mapping>	<!-- 의 맨 마지막에 Hello로 불러올 수 있는것인듯... -->
+
+
+
+	<servlet>
+
+		<servlet-name>MyInfo</servlet-name>
+		<servlet-class>lesson.servlet.MyInfo</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyInfo</servlet-name>
+		<url-pattern>/MyInfo</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 홈페이지의 프롤로그..? 첫 화면입니당 ^0^ -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file><!-- 홈페이지의 시작을 나타내는 경로 -->
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
+
+
+
+
+
+
+
+
