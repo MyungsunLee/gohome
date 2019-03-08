@@ -16,7 +16,8 @@ import javax.servlet.ServletResponse;
 public class MemberListServlet extends GenericServlet {
 
    @Override
-   public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+   public void service(ServletRequest req, ServletResponse res)
+		   throws ServletException, IOException {
       // TODO Auto-generated method stub
       Connection conn = null;
       Statement stmt = null;
@@ -56,7 +57,7 @@ public class MemberListServlet extends GenericServlet {
          String htmlStr = "";
          
          htmlStr += "<div>";
-         htmlStr += "<a href ='./add'>신규 회원</a>";
+         htmlStr += "<a href ='./Add'>신규 회원</a>";
          htmlStr += "</div>";
          htmlStr += "<br/>";
          
