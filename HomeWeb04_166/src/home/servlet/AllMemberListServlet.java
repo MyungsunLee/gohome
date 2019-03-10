@@ -22,9 +22,9 @@ public class AllMemberListServlet extends GenericServlet {
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		String url = "jdbc:oracle:thin@localhost:1521:xe";
-		String user = "sql";
-		String password = "sql";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "JSP";
+		String password = "JSP";
 		
 		String sql = "";
 		
@@ -33,7 +33,7 @@ public class AllMemberListServlet extends GenericServlet {
 			conn = DriverManager.getConnection(url,user,password);
 			stmt = conn.createStatement();
 			
-			sql = "SELLECT MNO, MNAME, EMAIL, CRE_DATE, PWD, MOD_DATE";
+			sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE, PWD, MOD_DATE";
 			sql += " FROM MEMBERS";
 			sql += " ORDER BY MNO ASC";
 			

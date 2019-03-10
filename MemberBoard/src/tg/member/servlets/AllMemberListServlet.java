@@ -23,8 +23,8 @@ public class AllMemberListServlet extends GenericServlet {
       ResultSet rs = null;
 
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
-      String user = "sql";
-      String password = "sql";
+      String user = "JSP";
+      String password = "JSP";
 
       String sql = "";
       try {
@@ -49,6 +49,15 @@ public class AllMemberListServlet extends GenericServlet {
          out.println("<body><h1>회원목록</h1>");
          //지금은 이렇게 했지만
          //앞으로는 뭐 Str같은스트링변수만들어서 프린트ln안에있는거 담+=로 담아서 한번에 출력?하는걸로?
+         
+         String htmlStr="";
+         htmlStr+="<div>";
+         htmlStr+="<a href='./Add'>신규 회원</a>";
+         htmlStr+="</div>";
+         htmlStr+="<br/>";
+         
+         out.println(htmlStr);
+         
          
          while(rs.next()) {
             out.println(
