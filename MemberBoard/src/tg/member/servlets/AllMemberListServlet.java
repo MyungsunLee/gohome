@@ -1,5 +1,6 @@
 package tg.member.servlets;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,7 +17,8 @@ import javax.servlet.ServletResponse;
 public class AllMemberListServlet extends GenericServlet {
 
    @Override
-   public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+   public void service(ServletRequest req, ServletResponse res)
+		   throws ServletException, IOException {
       // TODO Auto-generated method stub
       Connection conn = null;
       Statement stmt = null;
@@ -27,16 +29,16 @@ public class AllMemberListServlet extends GenericServlet {
       String password = "JSP";
 
       String sql = "";
+      
       try {
          Class.forName("oracle.jdbc.driver.OracleDriver");
          conn = DriverManager.getConnection(url, user, password);
-         stmt = conn.createStatement();
          
+         stmt = conn.createStatement();
          
          sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE, PWD, MOD_DATE";
          sql += " FROM MEMBERS";
          sql += " ORDER BY MNO ASC";
-         
          
          rs = stmt.executeQuery(sql); //여기서 실행시키는거겟지...?
          
@@ -50,14 +52,15 @@ public class AllMemberListServlet extends GenericServlet {
          //지금은 이렇게 했지만
          //앞으로는 뭐 Str같은스트링변수만들어서 프린트ln안에있는거 담+=로 담아서 한번에 출력?하는걸로?
          
+         // 새로 추가
          String htmlStr="";
+         
          htmlStr+="<div>";
          htmlStr+="<a href='./Add'>신규 회원</a>";
          htmlStr+="</div>";
          htmlStr+="<br/>";
          
          out.println(htmlStr);
-         
          
          while(rs.next()) {
             out.println(
@@ -71,6 +74,7 @@ public class AllMemberListServlet extends GenericServlet {
          }//while end
          
          out.println("</body></html>");
+         
       } catch (ClassNotFoundException e) {
          // TODO: handle exception
          e.printStackTrace();
