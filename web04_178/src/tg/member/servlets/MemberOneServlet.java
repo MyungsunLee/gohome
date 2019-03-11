@@ -15,7 +15,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class MemberOneServlet extends GenericServlet{
-
+//깃허브테스트 다시올리기...ㅎㅎ
 	@Override
 	public void service(ServletRequest req, ServletResponse res) 
 			throws ServletException, IOException {
