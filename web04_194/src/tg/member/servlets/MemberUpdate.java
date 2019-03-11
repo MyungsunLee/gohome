@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,69 +15,41 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value="/member/list")
+@WebServlet(value="/member/update")
 // 구우우우우웃!어노테이션으로 개꿀
 //jsp3.0부터 쓸 수 있습니당
 
-public class MemberListServlet extends GenericServlet{
+public class MemberUpdate extends GenericServlet{
 
-	@Override
-	public void service(ServletRequest req, ServletResponse res) 
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		
+	 protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			 throws ServletException, IOException {
+	      // TODO Auto-generated method stub
+
+		 Connection conn = null;
+		 PreparedStatement pstmt = null;
+		 ResultSet rs = null;
+		 
+		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "jsp";
 		String password =" jsp";
+		 
+		int mNO = Integer.parseInt(req.getParameter("mNo"));
 		
 		String sql = "";
 		
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("오라클 드라이버 로드");
+			
+			
 			conn = DriverManager.getConnection(url, user, password);
 			
-			stmt = conn.createStatement();
-						
-			sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
-			sql += " FROM MEMBERS";
-			sql += " ORDER BY MNO ASC";
-			
-			rs = stmt.executeQuery(sql);
-			
-			res.setContentType("text/html");
-			res.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out = res.getWriter();
-			
-			out.println("<html><head><title>회원목록</title></head>");
-			out.println("<body><h1>회원목록</h1>");
-			
-			// 새로 추가
-			String htmlStr = "";
-			
-			htmlStr += "<div>";
-			htmlStr += "<a href='./add'>신규 회원</a>";
-			htmlStr += "</div>";
-			htmlStr += "<br/>";
-			
-			out.println(htmlStr);
-			
-			while(rs.next()) {
-				out.println(
-					rs.getInt("mno") + "," + 
-					rs.getString("mname") + "," +
-					rs.getString("email") + "," +
-					rs.getDate("cre_date") + "<br/>"
-				);
-			} // while end
-			
-			out.println("</body></html>");
-			
-			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,9 +65,9 @@ public class MemberListServlet extends GenericServlet{
 				}
 			} // if(rs != null) end
 			
-			if(stmt != null) {
+			if(pstmt != null) {
 				try {
-					stmt.close();
+					pstmt.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -108,6 +81,12 @@ public class MemberListServlet extends GenericServlet{
 				}
 			}
 		} // finally end
+		
+	}
+
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 	}
 	

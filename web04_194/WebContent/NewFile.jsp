@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보</title>
 </head>
 <body>
-	
+    <h1>회원등록</h1>
+    <form action='./update' method='post'>
+ 	 	번호: <input type='text' name='mno'><br>
+   	 	이름: <input type='text' name='name'></br> 	 	
+ 	 	이메일: <input type='text' name='email'><br>
+ 	 	
+   	 	암호: <input type='password' name='password'><br>
+    	<input type='submit' value='수정'>
+   		<input type='reset' value='취소'>
+
+    </form>
+
+
 </body>
 </html>

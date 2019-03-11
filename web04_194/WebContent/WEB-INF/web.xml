@@ -20,43 +20,43 @@
 	
 
 
-	<servlet>
-		<servlet-name>MemberAdd</servlet-name>
-		<servlet-class>tg.member.servlets.MemberAddServlet</servlet-class>
-	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>MemberAdd</servlet-name> -->
+<!-- 		<servlet-class>tg.member.servlets.MemberAddServlet</servlet-class> -->
+<!-- 	</servlet> -->
 
-	<servlet-mapping>
-		<servlet-name>MemberAdd</servlet-name>
-		<url-pattern>/member/add</url-pattern>
-	</servlet-mapping>
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>MemberAdd</servlet-name> -->
+<!-- 		<url-pattern>/member/add</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
 	
 	
-	<servlet>
-		<servlet-name>MemberOneServlet</servlet-name>
-		<servlet-class>tg.member.servlets.MemberOneServlet</servlet-class>
-	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>MemberOneServlet</servlet-name> -->
+<!-- 		<servlet-class>tg.member.servlets.MemberOneServlet</servlet-class> -->
+<!-- 	</servlet> -->
 	
-	<servlet-mapping>
-		<servlet-name>MemberOneServlet</servlet-name>
-		<url-pattern>/member/one</url-pattern>
-	</servlet-mapping>
-	
-	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>MemberOneServlet</servlet-name> -->
+<!-- 		<url-pattern>/member/one</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
 	
 	
 	
 	
-	<servlet>
-		<servlet-name>MemberAddOneServlet</servlet-name>
-		<servlet-class>tg.member.servlets.MemberAddOneServlet</servlet-class>
-	</servlet>
 	
-	<servlet-mapping>
-		<servlet-name>MemberAddOneServlet</servlet-name>
-		<url-pattern>/member/AddOne</url-pattern>
-	</servlet-mapping>
+	
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>MemberAddOneServlet</servlet-name> -->
+<!-- 		<servlet-class>tg.member.servlets.MemberAddOneServlet</servlet-class> -->
+<!-- 	</servlet> -->
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>MemberAddOneServlet</servlet-name> -->
+<!-- 		<url-pattern>/member/AddOne</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
 
 	<welcome-file-list>

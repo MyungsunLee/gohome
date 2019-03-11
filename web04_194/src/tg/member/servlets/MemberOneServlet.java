@@ -13,7 +13,8 @@ import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-
+import javax.servlet.annotation.WebServlet;
+@WebServlet(value="/member/one")
 public class MemberOneServlet extends GenericServlet{
 //깃허브테스트 다시올리기...ㅎㅎ
 	@Override
