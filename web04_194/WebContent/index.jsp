@@ -11,12 +11,18 @@
 	
 	<a href='./member/one'>연습 페이지로 이동(AddOne->doGet)</a></br>
 	<a href='./member/AddOne'>연습 페이지로 이동(list service)</a></br>
-	<a href='./member/list'>메인 페이지로 이동(service)</a>
+	<a href='./member/list'>메인 페이지로 이동(service)</a></br>
 	
+	
+	
+	<a href='member/list'>메인 페이지로 이동(service)1</a></br><!-- 자동적으로 index를 기준으로 상대경로로 인식 -->
+	<a href='/member/list'>메인 페이지로 이동(service)2(안되는 링크)</a></br>
+	<a href='./member/list'>메인 페이지로 이동(service)3</a></br> <!-- 절대경로임 -->
+	<!--셋의 차이점???? -->
 		
 		<form action ='./member/AddOne' method='get'>
-					검색할 아이디 : <input type='text'
-					name='email' placeholder="이메일을 입력해 주세요">
+					검색할 이메일 : <input type='text'
+					name='email' placeholder="이메일을 입력해 주세요"></br>
 					검색할 이름 : <input type='text'
 					name='name' placeholder="이름을 입력해 주세요">
 					<input type="submit" value="검색"></form>

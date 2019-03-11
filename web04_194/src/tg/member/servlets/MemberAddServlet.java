@@ -86,33 +86,7 @@ public class MemberAddServlet extends HttpServlet {
          
          pstmt.executeUpdate();
          
-
-         res.setContentType("text/html");
-         res.setCharacterEncoding("UTF-8");
-
-         PrintWriter out = res.getWriter();
-
-         out.println("<html><head><title>회원목록</title></head>");
-         out.println("<body><h1>회원목록</h1>");
-
-         // 새로 추가
-         String htmlStr = "";
-         
-         
-
-         htmlStr += "<!DOCTYPE html>";
-         htmlStr += "<html>";
-         htmlStr += "<head>";
-         htmlStr += "<meta charset=\"UTF-8\">";
-         htmlStr += "<title>회원등록결과</title>";
-         htmlStr += "</head>";
-         htmlStr += "<body>";
-         htmlStr += "<p>등록 성공입니다~!</p>";
-         
-         
-         out.println(htmlStr);
-
-         
+         res.sendRedirect("./list");
       } catch (ClassNotFoundException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();

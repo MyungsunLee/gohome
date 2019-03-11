@@ -7,15 +7,15 @@
 	
 	
 	
-	<servlet>
-		<servlet-name>MemberList</servlet-name>
-		<servlet-class>tg.member.servlets.MemberListServlet</servlet-class>
-	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>MemberList</servlet-name> -->
+<!-- 		<servlet-class>tg.member.servlets.MemberListServlet</servlet-class> -->
+<!-- 	</servlet> -->
 
-	<servlet-mapping>
-		<servlet-name>MemberList</servlet-name>
-		<url-pattern>/member/list</url-pattern>
-	</servlet-mapping>
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>MemberList</servlet-name> -->
+<!-- 		<url-pattern>/member/list</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
 	
 

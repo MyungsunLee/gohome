@@ -13,7 +13,9 @@ import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
 
+@WebServlet(value="/member/list")
 public class MemberListServlet extends GenericServlet{
 
 	@Override
