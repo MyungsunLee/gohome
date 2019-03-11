@@ -32,7 +32,7 @@
 		<notation></notation>
 		<notation_level>0</notation_level>
 		<notation_expand_group>true</notation_expand_group>
-		<view_mode>1</view_mode>
+		<view_mode>2</view_mode>
 		<outline_view_mode>1</outline_view_mode>
 		<view_order_by>1</view_order_by>
 		<auto_ime_change>false</auto_ime_change>
@@ -134,8 +134,8 @@
 			<connections>
 			</connections>
 			<display>false</display>
-			<creation_date>2019-03-07 15:18:41</creation_date>
-			<updated_date>2019-03-07 16:22:01</updated_date>
+			<creation_date>2019-03-07 15:18:38</creation_date>
+			<updated_date>2019-03-07 16:21:59</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -180,7 +180,7 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>CRE_DATE</logical_name>
+			<logical_name>가입일</logical_name>
 			<physical_name>CRE_DATE</physical_name>
 			<type>date</type>
 		</word>
@@ -202,6 +202,22 @@
 		</word>
 		<word>
 			<id>2</id>
+			<length>50</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
+			<description></description>
+			<logical_name>이름</logical_name>
+			<physical_name>MNAME</physical_name>
+			<type>varchar(n)</type>
+		</word>
+		<word>
+			<id>3</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -213,24 +229,8 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>회원번호</logical_name>
-			<physical_name>memberNo</physical_name>
+			<physical_name>mno</physical_name>
 			<type>decimal</type>
-		</word>
-		<word>
-			<id>3</id>
-			<length>50</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>MNAME</logical_name>
-			<physical_name>MNAME</physical_name>
-			<type>varchar(n)</type>
 		</word>
 		<word>
 			<id>4</id>
@@ -244,7 +244,7 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>MOD_DATE</logical_name>
+			<logical_name>변경일</logical_name>
 			<physical_name>MOD_DATE</physical_name>
 			<type>date</type>
 		</word>
@@ -270,12 +270,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>241</height>
-			<width>265</width>
+			<height>239</height>
+			<width>322</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>72</x>
-			<y>60</y>
+			<x>48</x>
+			<y>36</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -291,7 +291,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>2</word_id>
+					<word_id>3</word_id>
 					<id>0</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -390,7 +390,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>3</word_id>
+					<word_id>2</word_id>
 					<id>3</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

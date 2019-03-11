@@ -5,28 +5,32 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class MemberListServlet extends GenericServlet{
+public class MemberOneServlet extends GenericServlet{
 
 	@Override
 	public void service(ServletRequest req, ServletResponse res) 
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "jsp";
 		String password =" jsp";
+		
+		String emailStr = req.getParameter("email");
+		String pwdStr = req.getParameter("password");
+		String nameStr = req.getParameter("name");
 		
 		String sql = "";
 		
@@ -34,13 +38,17 @@ public class MemberListServlet extends GenericServlet{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			
-			stmt = conn.createStatement();
+			
 						
 			sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
 			sql += " FROM MEMBERS";
+			sql += " WHERE EMAIL = 's1@test.com'";
 			sql += " ORDER BY MNO ASC";
 			
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+
+			
+			rs = pstmt.executeQuery(sql);
 			
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");
@@ -57,6 +65,12 @@ public class MemberListServlet extends GenericServlet{
 			htmlStr += "<a href='./add'>신규 회원</a>";
 			htmlStr += "</div>";
 			htmlStr += "<br/>";
+			
+			htmlStr += "<div>";
+			htmlStr += "<a href='./list'>메인 화면으로(모든 회원 출력)</a>";
+			htmlStr += "</div>";
+			htmlStr += "<br/>";
+			
 			
 			out.println(htmlStr);
 			
@@ -87,9 +101,9 @@ public class MemberListServlet extends GenericServlet{
 				}
 			} // if(rs != null) end
 			
-			if(stmt != null) {
+			if(pstmt != null) {
 				try {
-					stmt.close();
+					pstmt.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
