@@ -23,8 +23,8 @@
 		<form action ='./member/AddOne' method='get'>
 					검색할 이메일 : <input type='text'
 					name='email' placeholder="이메일을 입력해 주세요"></br>
-					검색할 이름 : <input type='text'
-					name='name' placeholder="이름을 입력해 주세요">
+					비밀번호 입력 : <input type='password'
+					name='pwd' placeholder="비밀번호를 입력해 주세요">
 					<input type="submit" value="검색"></form>
 		<!-- 폼태그2개로 나눠서 검색했더니 안됨 하나로 통합 후 검색해야했음 -->
 		<!-- 어쩌면 논문검색했을때 이 방법 비스무리하게 사용하지 않았을까 -->

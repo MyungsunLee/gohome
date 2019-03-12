@@ -38,7 +38,7 @@ public class MemberUpdate extends HttpServlet{
 		String password =" jsp";
 		 
 		int mNo = Integer.parseInt(req.getParameter("mno"));
-		
+		String pwd = req.getParameter("pwd");
 		String sql = "";
 		
 		
@@ -50,7 +50,7 @@ public class MemberUpdate extends HttpServlet{
 			conn = DriverManager.getConnection(url, user, password);
 			
 			
-			sql += "SELECT MNO, EMAIL, MNAME, CRE_DATE";
+			sql += "SELECT MNO, EMAIL, MNAME, CRE_DATE, PWD";
 			sql += " FROM MEMBERS";
 			sql += " WHERE MNO = ?";
 			
@@ -69,6 +69,7 @@ public class MemberUpdate extends HttpServlet{
 				mName = rs.getString("MNAME");
 				email = rs.getString("email");
 				creDate = rs.getDate("cre_date");
+				pwd = rs.getString("PWD");
 			}
 			
 			res.setContentType("text/html");
@@ -86,13 +87,17 @@ public class MemberUpdate extends HttpServlet{
 			htmlStr += "<body>";
 			htmlStr += "<h1>개인정보 수정</h1>";
 			htmlStr += "<form action='./update' method='post'>";
-			htmlStr += "번호: <input type='text' name='mno' value = '" +mNo + "'><br>";
+			htmlStr += "번호: <input type='text' name='mNo' value = '" +mNo + "' disabled='disabled'><br>";
 			htmlStr += "이름: <input type='text' name='name' value = '" + mName + "'></br>"; 	
 			htmlStr += "이메일: <input type='text' name='email' value='" + email + "'><br>";
 			htmlStr += "가입일: " + creDate + "</br>";
 			htmlStr += "<input type='submit' value='수정'>";
-			htmlStr += "<input type='reset' value='취소'>";
-			htmlStr += "</form>";
+
+			htmlStr += "<input type='button' value='뒤로가기' "
+					+ "onclick='location.href=\"./AddOne?email=" + email+"&pwd="+pwd + "\"'>";
+					//location.href 는 해당 링크 클래스파일의 doGet을 실행시킴
+					//이게 로그인상태를 유지하는건가?아닌가?
+			htmlStr += "</form>";	//역슬래쉬\는 구분자(",+ 등등)을 string안의 글자로 표시해줌
 			htmlStr += "</body>";
 			htmlStr += "</html>";
 			
@@ -135,35 +140,35 @@ public class MemberUpdate extends HttpServlet{
 	 
 	 protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			 throws ServletException, IOException {
-		 
+		 System.out.println("doPost를 탄다");
 		 Connection conn = null;
 	      PreparedStatement pstmt = null;
-
+	      //결과값없어서 resultset없어도됨
+	      
 	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	      String user = "jsp";
-	      String password = " jsp";
+	      String password = "jsp";
 	      
 	      req.setCharacterEncoding("UTF-8");
 	      
-	      String emailStr = req.getParameter("email");
-	      String pwdStr = req.getParameter("password");
-	      String nameStr = req.getParameter("name");
-
+	      String email = req.getParameter("email");
+	      String name = req.getParameter("name");
+	      int mNo = Integer.parseInt(req.getParameter("mNo"));
 	      String sql = "";
 
 	      try {
 	         Class.forName("oracle.jdbc.driver.OracleDriver");
 	         conn = DriverManager.getConnection(url, user, password);
 	         
-	         sql = "SELECT MNO, EMAIL, MNAME, CRE_DATE, MOD_DATE";
-	         sql += "FROM MEMBERS";
-	         sql += "WHERE ";
-
+	         sql += "UPDATE MEMBERS";
+	         sql += " SET EMAIL = ?, MNAME = ?,MOD_DATE = SYSDATE";
+	         sql += " WHERE MNO = ?";
+             
 	         pstmt = conn.prepareStatement(sql);
 	         
-	         pstmt.setString(1,  emailStr);
-	         pstmt.setString(2,  pwdStr);
-	         pstmt.setString(3,  nameStr);
+	         pstmt.setString(1,  email);
+	         pstmt.setString(2,  name);
+	         pstmt.setInt(3,  mNo);
 	         
 	         
 	         pstmt.executeUpdate();
