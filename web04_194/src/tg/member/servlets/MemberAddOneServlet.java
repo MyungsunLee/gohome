@@ -39,6 +39,8 @@ public class MemberAddOneServlet extends HttpServlet {
 		String pwdStr = req.getParameter("password");
 		String nameStr = req.getParameter("name");
 		
+		String emailValue = "s1@test.com";
+		
 		String sql = "";
 		
 		try {
@@ -92,11 +94,11 @@ public class MemberAddOneServlet extends HttpServlet {
 			
 			while(rs.next()) {	//하나뽑아오기?
 				out.println(
+						"<a href='./update?mno="+ rs.getInt("mno") + "'>" +
 					rs.getInt("mno") + "," + 
-//					rs.getString("password") + "," +
 					rs.getString("mname") + "," +
 					rs.getString("email") + "," +
-					rs.getDate("cre_date") + "<br/>"
+					rs.getDate("cre_date") + "</a><br/>"
 				);
 			} // while end
 			

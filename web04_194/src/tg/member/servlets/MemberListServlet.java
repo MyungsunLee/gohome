@@ -67,10 +67,11 @@ public class MemberListServlet extends GenericServlet{
 			
 			while(rs.next()) {
 				out.println(
+						"<a href='./update?mno="+ rs.getInt("mno") + "'>" + 
 					rs.getInt("mno") + "," + 
 					rs.getString("mname") + "," +
 					rs.getString("email") + "," +
-					rs.getDate("cre_date") + "<br/>"
+					rs.getDate("cre_date") + "</a></br>" 
 				);
 			} // while end
 			
