@@ -37,7 +37,7 @@ public class MemberUpdate extends HttpServlet{
 		String user = "jsp";
 		String password =" jsp";
 		 
-		int mNo = Integer.parseInt(req.getParameter("mno"));
+		int mNo = Integer.parseInt(req.getParameter("mNo"));
 		String pwd = req.getParameter("pwd");
 		String sql = "";
 		
@@ -92,8 +92,10 @@ public class MemberUpdate extends HttpServlet{
 			htmlStr += "이메일: <input type='text' name='email' value='" + email + "'><br>";
 			htmlStr += "가입일: " + creDate + "</br>";
 			htmlStr += "<input type='submit' value='수정'>";
-//			htmlStr += "<input type='button' value='뒤로가기' "
-//					+ "onclick='location.href=\"./AddOne\"'>";
+			htmlStr += "<input type='button' value='삭제' onclick='location.href=\"./delete?mNo=" + mNo + "\"'>";
+			
+//			htmlStr += "<a href='./update?mNo="+ mNo + "'>";
+			
 			htmlStr += "<input type='button' value='뒤로가기' "
 					+ "onclick='location.href=\"./AddOne?email="
 					+ email+"&pwd="+pwd + "\"'>";

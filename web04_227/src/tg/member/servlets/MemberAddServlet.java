@@ -40,8 +40,8 @@ public class MemberAddServlet extends HttpServlet {
       htmlStr += "이름: <input type='text' name='name'></br>";
       htmlStr += "이메일: <input type='text' name='email'><br>";
       htmlStr += "암호: <input type='password' name='password'><br>";
-
-      htmlStr += "<input type='submit' value=추가>";
+      htmlStr += "<input type='submit' value='추가'>";
+      htmlStr += "<input type='button' value='뒤로가기' onclick='location.href=\"./list\"'>";
       htmlStr += "<input type='reset' value='취소'>";
 
       htmlStr += "</form>";

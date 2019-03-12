@@ -69,7 +69,7 @@ public class MemberListServlet extends GenericServlet{
 				out.println(
 						 
 					rs.getInt("mno") + "," +
-					"<a href='./update?mNo="+ rs.getInt("mno") + "'>" +
+					"<a href='./update?mNo="+ rs.getInt("mNo") + "'>" +
 					rs.getString("mname") + "," +
 					rs.getString("email") + "</a>"  +
 					rs.getDate("cre_date") + "<a href='./delete?mNo=" +rs.getInt("mno") + "'>[삭제]</a>" + "</br>"
