@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(value = "/member/list")
 public class MemberList extends HttpServlet {
 
-	@Override
+	@Override	//보안이슈때문에 보통 이쪽에서 작성 안함(?)
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 특정한 주석. 주석 속에서도 빠르게 찾아갈수잇음!신기방기
@@ -47,9 +47,13 @@ public class MemberList extends HttpServlet {
 			System.out.println("쿼리 수행 성공");
 
 			// 이제 res 안씀 ㅠ,.ㅠ 감격
-
+			
+			
+			//request에 회원 목록 데이터 보관
 			ArrayList<MemberDto> memberList = new ArrayList();
-
+			//드디어 리스트 사용함!
+			//자바로만 구성된(?) memberDto클래스의 변수에 데이터 컬럼을 하나씩 담아서
+			//배열에 담음
 			int mno = 0;
 			String mname = "";
 			String email = "";
@@ -63,15 +67,19 @@ public class MemberList extends HttpServlet {
 
 				MemberDto memberDto = new MemberDto(mno, mname, email, creDate);
 				memberList.add(memberDto);
+				//생성자를 통해 데이터를 리스트(배열)에 담음
 			}
 
 			req.setAttribute("memberList", memberList);
 
 			RequestDispatcher dispatcher = 
 					req.getRequestDispatcher("/member/memberListView.jsp");
-
+			//???reDirect와의 차이점?? 분명 차이점이 있습니당
+			//이부분에서 화면으로 전송한 것입니다
+			
+			
 			dispatcher.include(req, res);
-
+			//req랑 res를 포함시키면 프로그램이 끝나면서 페이지를 memberListView로 전환시켜줌
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

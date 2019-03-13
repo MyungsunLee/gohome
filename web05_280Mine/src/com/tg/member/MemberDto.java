@@ -1,7 +1,7 @@
 package com.tg.member;
 
 import java.util.Date;
-
+//여기가 모델만들기!
 public class MemberDto {
 
 	private int no = 0;
