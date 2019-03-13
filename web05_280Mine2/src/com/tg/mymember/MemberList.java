@@ -1,4 +1,4 @@
-package com.tg.member;
+package com.tg.mymember;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value = "/member/list")
+import com.tg.member.MemberDto;
+
+@WebServlet(value = "/mymember/list")
 public class MemberList extends HttpServlet {
 
 	@Override	//보안이슈때문에 보통 이쪽에서 작성 안함(?)
@@ -37,7 +39,7 @@ public class MemberList extends HttpServlet {
 	         Class.forName("oracle.jdbc.driver.OracleDriver");
 	         conn = DriverManager.getConnection(url, user, password);
 	                  
-	         sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
+	         sql = "SELECT MNO, MNAME, EMAIL, PWD, CRE_DATE, MOD_DATE";
 	         sql += " FROM MEMBERS";
 	         sql += " ORDER BY MNO ASC";
 	         
@@ -56,19 +58,23 @@ public class MemberList extends HttpServlet {
 	         int mno = 0;
 	         String mname = "";
 	         String email = "";
+	         String pwd = "";
 	         Date creDate = null;
-	         
+	         Date modDate = null;
 //	         데이터베이스에서 회원 정보를 가져와 MemberDto에 담는다
 //	         그리고 MemberDto 객체를 ArrayList에 추가한다
 	         while(rs.next()) {
 	            mno = rs.getInt("MNO");
 	            mname = rs.getString("MNAME");
 	            email = rs.getString("EMAIL");
+	            pwd=rs.getString("PWD");
 	            creDate = rs.getDate("CRE_DATE");
+	            modDate = rs.getDate("MOD_DATE");
 	            
 	            MemberDto memberDto = 
-	                  new MemberDto(mno, mname, email, creDate);
+	                  new MemberDto(mno, mname, email, pwd, creDate,modDate);
 	            memberList.add(memberDto);
+	            
 	            
 	         } // while end
 	         
@@ -77,7 +83,7 @@ public class MemberList extends HttpServlet {
 	         
 	         // jsp로 출력을 위임한다(페이지를 넘긴다) //리퀘스트를 풀다
 	         RequestDispatcher dispatcher = 
-	               req.getRequestDispatcher("/member/memberListView.jsp"); // 다음 경로의 위치 설정
+	               req.getRequestDispatcher("/myMember/memberListView.jsp"); // 다음 경로의 위치 설정
 	         
 	         dispatcher.include(req, res); //setAttribute로 담았으니깐 가져가야 페이지의 내용이 소실되지 않는다
 	         
