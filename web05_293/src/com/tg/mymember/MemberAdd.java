@@ -64,7 +64,8 @@ public class MemberAdd extends HttpServlet{
 	         pstmt.executeUpdate();
 	         
 	         res.sendRedirect("./list");
-	      } catch (Exception e) {
+	      }
+	      catch (Exception e) {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	         req.setAttribute("error",e);

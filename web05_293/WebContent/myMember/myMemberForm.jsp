@@ -11,7 +11,7 @@
 	
 	<!-- 자바에 관련된 코드가 일절 없기때문에 홈페이지로 바로 띄울 수 잇음 -->
 	<!-- 벗뜨...자바관련코드가 있으면.... -->
-	<form action="./mymember/add" method="post">
+	<form action="../mymember/add" method="post">
 		이름 : <input type= "text" name="name"></br>
 		이메일 : <input type="text" name="email"></br>
 		암호 : <input type="password" name="password"></br>
