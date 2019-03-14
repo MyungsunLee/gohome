@@ -1,0 +1,131 @@
+package com.tg.mymember;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.tg.member.MemberDto;
+
+@WebServlet(value = "/mymember/list")
+public class MemberList extends HttpServlet {
+
+	@Override	//보안이슈때문에 보통 이쪽에서 작성 안함(?)
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// 특정한 주석. 주석 속에서도 빠르게 찾아갈수잇음!신기방기
+		 Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      
+	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	      String user = "jsp";
+	      String password = "jsp";
+	      
+	      String sql = "";
+	      
+	      try {
+	         Class.forName("oracle.jdbc.driver.OracleDriver");
+	         conn = DriverManager.getConnection(url, user, password);
+	                  
+	         sql = "SELECT MNO, MNAME, EMAIL, PWD, CRE_DATE, MOD_DATE";
+	         sql += " FROM MEMBERS";
+	         sql += " ORDER BY MNO ASC";
+	         
+	         pstmt = conn.prepareStatement(sql);
+	               
+	         rs = pstmt.executeQuery();
+	         System.out.println("쿼리 수행 성공");
+	         
+	         res.setContentType("text/html");
+	         res.setCharacterEncoding("UTF-8");
+	         
+//	         request 회원 목록 데이터 보관
+//	         왜 리스트로 만들었나? 멤버가 몇 명이나 될지 모르는 것(여러명이라 ArrayList 로 만들었다)
+	         ArrayList<MemberDto> memberList = new ArrayList<MemberDto>(); // 이후 memberListView.jsp 로 전달한다
+	         
+	         int mno = 0;
+	         String mname = "";
+	         String email = "";
+	         String pwd = "";
+	         Date creDate = null;
+	         Date modDate = null;
+//	         데이터베이스에서 회원 정보를 가져와 MemberDto에 담는다
+//	         그리고 MemberDto 객체를 ArrayList에 추가한다
+	         while(rs.next()) {
+	            mno = rs.getInt("MNO");
+	            mname = rs.getString("MNAME");
+	            email = rs.getString("EMAIL");
+	            pwd=rs.getString("PWD");
+	            creDate = rs.getDate("CRE_DATE");
+	            modDate = rs.getDate("MOD_DATE");
+	            
+	            MemberDto memberDto = 
+	                  new MemberDto(mno, mname, email, pwd, creDate,modDate);
+	            memberList.add(memberDto);
+	            
+	            
+	         } // while end
+	         
+	         // request에 회원 목록 데이터를 보관한다 // map 방식
+	         req.setAttribute("memberList", memberList);
+	         
+	         // jsp로 출력을 위임한다(페이지를 넘긴다) //리퀘스트를 풀다
+	         RequestDispatcher dispatcher = 
+	               req.getRequestDispatcher("/myMember/memberListView.jsp"); // 다음 경로의 위치 설정
+	         
+	         dispatcher.include(req, res); //setAttribute로 담았으니깐 가져가야 페이지의 내용이 소실되지 않는다
+	         
+	         
+	         
+	      } catch (ClassNotFoundException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally {
+	         if(rs != null) {
+	            try {
+	               rs.close();
+	            } catch (Exception e) {
+	               e.printStackTrace();
+	            }
+	         } // if(rs != null) end
+	         
+	         if(pstmt != null) {
+	            try {
+	               pstmt.close();
+	            } catch (Exception e) {
+	               e.printStackTrace();
+	            }
+	         }
+	         
+	         if(conn != null) {
+	            try {
+	               conn.close();
+	            } catch (Exception e) {
+	               e.printStackTrace();
+	            }
+	         }
+	      } // finally end
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+
+	}
+}
