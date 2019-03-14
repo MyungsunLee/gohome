@@ -11,7 +11,7 @@
 <body>
 
 	<jsp:include page="/Header.jsp"/>
-	
+	<!--  -->
 	<h1>내가 만든 회원목록 전체조회</h1>
 	<div>
 		<a href="./add">신규회원</a>

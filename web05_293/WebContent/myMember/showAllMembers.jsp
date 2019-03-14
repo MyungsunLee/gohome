@@ -11,7 +11,7 @@
 <body>
 	<h1>회원목록</h1>
 	<div>
-		<a href="./add">신규회원</a>
+		<a href="../mymember/add">신규회원</a>
 	</div>
 	
 	<% //이것이 바로 scriptlet
