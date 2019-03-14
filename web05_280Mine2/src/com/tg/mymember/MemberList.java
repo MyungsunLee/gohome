@@ -22,7 +22,8 @@ import com.tg.member.MemberDto;
 public class MemberList extends HttpServlet {
 
 	@Override	//보안이슈때문에 보통 이쪽에서 작성 안함(?)
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 특정한 주석. 주석 속에서도 빠르게 찾아갈수잇음!신기방기
 		 Connection conn = null;

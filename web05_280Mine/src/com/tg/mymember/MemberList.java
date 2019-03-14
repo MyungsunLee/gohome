@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tg.member.MemberDto;
 
-@WebServlet(value = ".member/list")
+@WebServlet(value = "/mymember/list")
 public class MemberList extends HttpServlet {
 
 	@Override	//보안이슈때문에 보통 이쪽에서 작성 안함(?)
@@ -79,7 +79,7 @@ public class MemberList extends HttpServlet {
 	         
 	         // jsp로 출력을 위임한다(페이지를 넘긴다) //리퀘스트를 풀다
 	         RequestDispatcher dispatcher = 
-	               req.getRequestDispatcher("/mymember/memberListView.jsp"); // 다음 경로의 위치 설정
+	               req.getRequestDispatcher("/myMember/showAllMembers.jsp"); // 다음 경로의 위치 설정
 	         
 	         dispatcher.include(req, res); //setAttribute로 담았으니깐 가져가야 페이지의 내용이 소실되지 않는다
 	         
