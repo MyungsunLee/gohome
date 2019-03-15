@@ -7,6 +7,8 @@
 <title>회원등록</title>
 </head>
 <body>
+
+<jsp:include page="/Header.jsp"/>
 	<h1>회원등록</h1>
 	
 	<!-- 자바에 관련된 코드가 일절 없기때문에 홈페이지로 바로 띄울 수 잇음 -->
@@ -18,5 +20,7 @@
 		<input type="submit" value="추가">
 		<input type="reset" value="취소">
 	</form>
+	
+		<jsp:include page="/Tail.jsp"/>
 </body>
 </html>

@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<jsp:include page="/Header.jsp"/>
 	<h1>회원목록</h1>
 	<div>
 		<a href="../mymember/add">신규회원</a>
@@ -34,5 +36,7 @@
 	
 	<% } %>
 		<!-- 이제 이 파일에서 F11로 실행시키면...안됩니다.... -->
+		
+			<jsp:include page="/Tail.jsp"/>
 </body>
 </html>
