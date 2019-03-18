@@ -22,7 +22,7 @@
 		이름 : <input type= "text" name="name" value="<%=memberDto.getName()%>"></br>
 		이메일 : <input type="text" name="email" value="<%=memberDto.getEmail()%>"></br>
 		<input type="submit" value="수정">
-		<input type="button" value="">
+		<input onclick="location"type="button" value="뒤로가기">
 		<!-- <input type="reset" value="취소"> -->
 	</form>
 	

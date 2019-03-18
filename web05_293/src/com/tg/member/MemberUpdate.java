@@ -81,13 +81,18 @@ public class MemberUpdate extends HttpServlet{
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("./memberDetailView.jsp");
 			
-			
+			dispatcher.include(req,res);
 			
 			
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			req.setAttribute("error", e);//key,value 라고 합니다
+	    	  RequestDispatcher dispatcher = req.getRequestDispatcher("/error.jsp");
+	    	  
+	    	  dispatcher.forward(req, res);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
