@@ -18,12 +18,12 @@ public class MemberDto {
 	}
 	
 	
-	public MemberDto(int no, String name, String email, Date modifiedDate) {
+	public MemberDto(int no, String name, String email, Date createDate) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.email = email;
-		this.modifiedDate = modifiedDate;
+		this.createDate = createDate;
 	}
 	
 

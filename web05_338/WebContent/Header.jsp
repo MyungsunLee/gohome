@@ -29,7 +29,7 @@
     		<tr>
     			<td><a href="/member/list">회원리스트</a></td>
     			<td><a href="/member/add">신규회원</a></td>
-    			<td><a href="/auth/login">로그인</a></td>
+    			<td><a href="/auth/login">로그인</a></td>`
     		</tr>
     	</table>
     	
