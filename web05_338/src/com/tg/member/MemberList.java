@@ -40,7 +40,7 @@ public class MemberList extends HttpServlet {
 	         Class.forName("oracle.jdbc.driver.OracleDriver");
 	         conn = DriverManager.getConnection(url, user, password);
 	                  
-	         sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
+	         sql = "SELECT MNO, MNAME, EMAIL, MOD_DATE";
 	         sql += " FROM MEMBERS";
 	         sql += " ORDER BY MNO ASC";
 	         pstmt = conn.prepareStatement(sql);
@@ -59,7 +59,7 @@ public class MemberList extends HttpServlet {
 	         int mno = 0;
 	         String mname = "";
 	         String email = "";
-	         Date creDate = null;
+	         Date modDate = null;
 	         
 //	         데이터베이스에서 회원 정보를 가져와 MemberDto에 담는다
 //	         그리고 MemberDto 객체를 ArrayList에 추가한다
@@ -67,10 +67,10 @@ public class MemberList extends HttpServlet {
 	            mno = rs.getInt("MNO");
 	            mname = rs.getString("MNAME");
 	            email = rs.getString("EMAIL");
-	            creDate = rs.getDate("CRE_DATE");
+	            modDate = rs.getDate("MOD_DATE");
 	            
 	            MemberDto memberDto = 
-	                  new MemberDto(mno, mname, email, creDate);
+	                  new MemberDto(mno, mname, email, modDate);
 	            memberList.add(memberDto);
 	            
 	         } // while end

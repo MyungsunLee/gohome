@@ -14,12 +14,38 @@
 			"홍길동","임꺽정","일지매","용비"
 	};
 	pageContext.setAttribute("nameArr",names);
-%>
+%> <!-- 여기의 pageContext는 참조변수명...? -->
 </body>
 	<ul>
-	<c:forEach var="nameStr" items="${names}" begin="0" end="3">
-		<li>${nameStr}</li>
+	<c:forEach var="nameStr" items="${nameArr}" begin="0" end="3" varStatus="i">
+	<c:if test="${nameStr != '임꺽정'}"></c:if>
+		<li>${i.count} 번째 : ${nameStr}</li>
 	
 	</c:forEach>
 	</ul>
+	
+	<c:if test="${10 > 20}" var="result">
+		1. 10은 20보다 크다<br>
+	</c:if>
+		2. ${result}<br>
+	
+	<c:if test="${10 < 20}" var="result2">
+		3. 10은 20보다 크다<br>
+	</c:if>
+		4. ${result2}<br>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </html>

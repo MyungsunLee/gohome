@@ -15,6 +15,7 @@
 	<div>
 		<a href="./add">신규회원</a>
 	</div>
+	</br>
 	
 	<c:forEach var="memberDto" items= "${memberList}">
 	
@@ -22,8 +23,8 @@
 	<a href='./update?no=${memberDto.no}'>${memberDto.name}</a>,
 	${memberDto.email},
 	${memberDto.createDate},
-	수정한 날짜 : ${memberDto.modifiedDate},
-	<a href='./delete?no=${memberDto.no}'>[삭제]</a>
+	수정한 날짜 : ${memberDto.modifiedDate}
+	<a href='./delete?no=${memberDto.no}'>[삭제]</a></br>
 	</c:forEach>
 	
 	<jsp:include page="/Tail.jsp"/>
